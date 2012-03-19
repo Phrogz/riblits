@@ -1,15 +1,10 @@
 # encoding: utf-8
-require 'sinatra/base'
-
-module Sinatra
-	module PartialPartials
-		def local_get(url)
-			call(env.merge("PATH_INFO" => url)).last.join
-		end
-
-		def partial( page, variables={} )
-			haml page, {layout:false}, variables
-		end
+module PartialPartials
+	def spoof_request(uri,env_modifications={})
+		call(env.merge("PATH_INFO" => uri).merge(env_modifications)).last.join
 	end
-	helpers PartialPartials
+
+	def partial( page, variables={} )
+		haml page, {layout:false}, variables
+	end
 end

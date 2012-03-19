@@ -1,3 +1,4 @@
+# encoding: utf-8
 module NiceBytes
 	K = 2.0**10
 	M = 2.0**20
@@ -27,4 +28,3 @@ module NiceBytes
 	end
 	module_function :nice_bytes
 end
-Sinatra.helpers NiceBytes if defined? Sinatra
