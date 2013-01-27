@@ -10,15 +10,15 @@
 		%meta(name="author" content="MyAppAuthor")
 		%link(rel="icon" type="image/png" href="/favicon.png")
 		%title= @title
-		- if options.css_files == :blob
+		- if settings.css_files == :blob
 			%link(type="text/css" rel="stylesheet" href="/blob.css?modified=#{File.mtime('public/blob.css').to_i}" )
 		- else
-			- options.css_files.each do |css|
+			- settings.css_files.each do |css|
 				%link(type="text/css" rel="stylesheet" href="/css/#{css}" )
-		- if options.js_files == :blob
+		- if settings.js_files == :blob
 			%script(type="text/javascript" src="/blob.js?modified=#{File.mtime('public/blob.js').to_i}")
 		- else
-			- options.js_files.each do |js|
+			- settings.js_files.each do |js|
 				%script(type="text/javascript" src="/js/#{js}")
 	%body{id:@action}
 		%h1#title= @title
